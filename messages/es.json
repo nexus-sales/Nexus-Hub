@@ -1,0 +1,486 @@
+{
+  "Index": {
+    "dateTimeFormat": "es-ES",
+    "title": "Nexus Sales - Portal Comercial",
+    "metaDescription": "Hub unificado para gestión comercial de energía, telefonía y alarmas.",
+    "welcome": "Bienvenido a",
+    "description": "Tu hub centralizado donde integras todas las herramientas para tu día a día, accedes a noticias en tiempo real y potencias tus ventas con inteligencia artificial.",
+    "getStarted": "Acceder al Portal",
+    "viewNews": "Ver Novedades",
+    "badge": "Plataforma Comercial Unificada",
+    "whatWeDoBadge": "Nuestros Servicios",
+    "whatWeDoTitle": "Todo lo que necesitas en un solo lugar",
+    "whatWeDoDesc": "Más que una plataforma de ventas, somos tu socio tecnológico. Desarrollamos soluciones a medida y te damos las herramientas para triunfar.",
+    "stats": {
+      "activeAgents": "Comerciales activos",
+      "monthlySales": "Ventas mensuales",
+      "uptime": "Uptime garantizado",
+      "techSupport": "Soporte técnico"
+    },
+    "about": {
+      "badge": "Sobre Nosotros",
+      "title": "Ventas + Tecnología =",
+      "success": "Éxito",
+      "desc": "En Nexus Sales no solo vendemos energía, telefonía y alarmas. Somos un equipo de desarrolladores y comerciales que creamos las herramientas que usamos cada día.",
+      "philosophy": "Cada aplicación que ves en esta plataforma ha sido diseñada pensando en las necesidades reales de nuestro equipo comercial.",
+      "items": [
+        "Herramientas diseñadas por y para comerciales",
+        "Desarrollo de apps a medida para tu negocio",
+        "Soporte técnico especializado 24/7",
+        "Integración con los principales proveedores"
+      ],
+      "cards": {
+        "coverage": "Cobertura Nacional",
+        "team": "Equipo Experto",
+        "ai": "IA Integrada",
+        "results": "Resultados Reales"
+      }
+    },
+    "readyToStart": {
+      "title": "¿Listo para empezar?",
+      "desc": "Accede a todas las herramientas, noticias en tiempo real y el asistente de IA que te ayudará a cerrar más ventas.",
+      "button": "Ir al Portal de Servicios"
+    },
+    "features": {
+      "energia": "Energía",
+      "energiaDesc": "Comparadores de tarifas de luz y gas para particulares y empresas",
+      "telefonia": "Telefonía",
+      "telefoniaDesc": "Fibra, móvil y soluciones convergentes de los principales operadores",
+      "alarmas": "Alarmas",
+      "alarmasDesc": "Sistemas de seguridad para hogares y negocios",
+      "desarrollo": "Desarrollo",
+      "desarrolloDesc": "Creamos aplicaciones a medida para potenciar tu negocio"
+    }
+  },
+  "Navbar": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "services": "Servicios",
+    "company": "Empresa",
+    "about": "Nosotros",
+    "home": "Inicio",
+    "dashboard": "Dashboard",
+    "energy": "Energía",
+    "telephony": "Telefonía",
+    "alarms": "Alarmas",
+    "voice": "Locuciones PBX",
+    "commissions": "Mis Comisiones",
+    "news": "Noticias",
+    "admin": "Administración",
+    "theme": "TEMA",
+    "userDefault": "Usuario",
+    "guestDefault": "Invitado",
+    "signOut": "CERRAR SESIÓN"
+  },
+  "Admin": {
+    "analytics": {
+      "dateTimeFormat": "es-ES",
+      "title": "Analítica de Rendimiento",
+      "totalLeads": "Total Leads",
+      "new": "Nuevos",
+      "managed": "Gestionados",
+      "activity7Days": "Actividad de Leads (7 días)",
+      "topAgents": "Top Agentes (Asignaciones)",
+      "noLeads": "No hay leads asignados para mostrar rendimiento.",
+      "statusDistribution": "Distribución de Estados",
+      "unknownUser": "Desconocido",
+      "activePerformers": "Agentes más activos",
+      "systemStatus": "Estado del Sistema",
+      "monitoringText": "El portal Nexus está funcionando de forma óptima. Se han registrado {logs} eventos de auditoría en las últimas 24 horas y el tiempo de respuesta de la base de datos es excelente.",
+      "allServicesActive": "Todos los servicios activos",
+      "status": {
+        "new": "Nuevos",
+        "inProcess": "En Proceso",
+        "managed": "Gestionados"
+      }
+    },
+    "title": "Administración del Sistema",
+    "accessDenied": "Acceso Denegado",
+    "noPermission": "No tienes permisos para acceder a este panel. Contacta con un superadministrador si crees que es un error.",
+    "backHome": "VOLVER AL INICIO",
+    "loading": "Cargando panel...",
+    "header": {
+      "title": "Panel de Control",
+      "subtitle": "Gestión centralizada de Nexus Sales",
+      "osBadge": "Sistema Operativo"
+    },
+    "users": {
+        "title": "Gestión de Usuarios",
+        "table": {
+            "name": "Nombre",
+            "email": "Email",
+            "role": "Rol",
+            "status": "Estado",
+            "actions": "Acciones",
+            "apps": "Permisos de Apps"
+        },
+        "noName": "Sin Nombre",
+        "errors": {
+            "updateName": "Error al actualizar nombre",
+            "savePermissions": "Error al guardar permisos"
+        },
+        "audit": {
+            "permChange": "Cambio de permisos",
+            "revoked": "Revocó",
+            "granted": "Otorgó",
+            "accessTo": "acceso a",
+            "for": "para",
+            "profileUpdate": "Actualización Perfil",
+            "nameChanged": "Cambió nombre de {email} a {name}"
+        }
+    },
+    "leads": {
+        "dateTimeFormat": "es-ES",
+        "title": "Gestión de Leads",
+        "searchPlaceholder": "Buscar lead...",
+        "noLeads": "No se encontraron leads.",
+        "export": "Exportar CSV",
+        "table": {
+            "date": "Fecha",
+            "customer": "Cliente",
+            "service": "Servicio",
+            "status": "Estado",
+            "actions": "Acciones"
+        },
+        "status": {
+            "new": "Nuevo",
+            "inProcess": "En Proceso",
+            "managed": "Gestionado"
+        }
+    },
+    "appsGrid": {
+        "title": "Gestionar Aplicaciones",
+        "deleteConfirm": "¿Eliminar \"{title}\"?",
+        "adminView": "Vista Admin",
+        "userView": "Vista Comercial",
+        "configLinks": "Enlaces configurados",
+        "editLabel": "Editar nombre:",
+        "editUrl": "Editar URL:",
+        "editLinkTitle": "Editar enlace",
+        "deleteLinkTitle": "Eliminar enlace",
+        "deleteLinkConfirm": "¿Eliminar enlace \"{label}\"?",
+        "addLink": "Añadir Enlace",
+        "newLinkLabel": "Nombre del nuevo enlace:",
+        "newLinkUrl": "URL del nuevo enlace:"
+    },
+    "actions": {
+      "apps": {
+        "dateTimeFormat": "es-ES",
+        "title": "Nueva Aplicación",
+        "name": "Nombre de la Aplicación",
+        "desc": "Descripción",
+        "icon": "Icono",
+        "type": "Tipo",
+        "create": "Crear Aplicación",
+        "typeComercial": "VISTA COMERCIAL",
+        "typeAdmin": "VISTA ADMIN",
+        "noDescription": "Sin descripción",
+        "placeholders": {
+          "title": "Ej: Analítica avanzada",
+          "desc": "Breve descripción de la funcionalidad..."
+        },
+        "messages": {
+          "missingTitle": "Por favor, indica al menos un título para la aplicación.",
+          "success": "✅ Aplicación creada con éxito",
+          "unknownError": "Error desconocido"
+        }
+      },
+      "news": {
+        "dateTimeFormat": "es-ES",
+        "title": "Publicar Noticia",
+        "itemTitle": "Título de la noticia",
+        "content": "Contenido",
+        "tag": "Etiqueta",
+        "url": "URL (opcional)",
+        "publish": "Publicar Noticia",
+        "edit": "Editar Noticia",
+        "delete": "Eliminar Noticia",
+        "deleteConfirm": "¿Eliminar noticia?",
+        "deleteDesc": "Esta acción no se puede deshacer. Se eliminará permanentemente:",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "messages": {
+          "missingFields": "Por favor, completa el título y el contenido de la noticia.",
+          "success": "✅ Noticia publicada",
+          "updated": "✅ Noticia actualizada",
+          "deleted": "✅ Noticia eliminada"
+        }
+      },
+      "ticker": {
+        "title": "Mensaje Ticker",
+        "categoryPlaceholder": "Categoría (ej: PROMOCIÓN, SISTEMA...)",
+        "content": "Mensaje",
+        "send": "Enviar al Ticker",
+        "messages": {
+          "missingContent": "Por favor, escribe un mensaje para el ticker.",
+          "success": "✅ Mensaje enviado al ticker con éxito"
+        }
+      }
+    },
+    "audit": {
+      "title": "Registro de Actividad",
+      "subtitle": "Actividad reciente del sistema",
+      "noActivity": "No hay actividad registrada en este periodo.",
+      "filters": {
+        "today": "Hoy",
+        "month": "Mes",
+        "year": "Año",
+        "all": "Todos"
+      }
+    },
+    "settings": {
+      "visual": "Personalización Visual",
+      "interfaceMode": "Modo de Interfaz",
+      "interfaceDesc": "Alternar tema claro/oscuro",
+      "siteInfo": "Información del Sitio",
+      "title": "Configuración del Sistema",
+      "tabs": {
+        "general": "General",
+        "menus": "Menús",
+        "capabilities": "Capacidades",
+        "company": "Empresa",
+        "stats": "Estadísticas"
+      },
+      "general": {
+        "footerDesc": "Descripción del Footer",
+        "footerPlaceholder": "Descripción breve de la empresa...",
+        "footerHelp": "Aparece bajo el logo en el pie de página",
+        "contactEmail": "Email de Contacto",
+        "contactPhone": "Teléfono",
+        "location": "Ubicación",
+        "placeholders": {
+            "email": "ej: contacto@empresa.com",
+            "phone": "ej: +34 600 000 000",
+            "location": "ej: Madrid, España"
+        }
+      },
+      "company": {
+          "sectionLabel": "Sección",
+          "updateSection": "Actualizar esta sección",
+          "title": "Título",
+          "shortDesc": "Descripción Corta",
+          "detailedContent": "Contenido Detallado",
+          "messages": {
+              "success": "Sección actualizada"
+          }
+      },
+      "menus": {
+          "servicesCol": "Columna \"SERVICIOS\"",
+          "companyCol": "Columna \"EMPRESA\"",
+          "commaHint": "Separar por comas",
+          "placeholders": {
+              "services": "Ej: Consultoría, Desarrollo, Cloud...",
+              "company": "Ej: Nosotros, Proyectos, Contacto..."
+          }
+      },
+      "stats": {
+          "statLabel": "Estadística",
+          "labelField": "Etiqueta",
+          "valueField": "Valor",
+          "helpText": "Estos valores se muestran en la sección \"QuickStats\" de la página de Servicios. Usa valores cortos y directos (ej: 1.2k, 850, 15m) para mantener la estética."
+      },
+      "saveAll": "Guardar Toda la Configuración",
+      "messages": {
+          "success": "Configuración guardada correctamente",
+          "error": "Error al guardar: {message}",
+          "sectionUpdated": "Sección \"{title}\" actualizada"
+      }
+    },
+    "themes": {
+      "ocean": "Océano",
+      "nature": "Naturaleza",
+      "cosmos": "Cosmos",
+      "energy": "Energía",
+      "corpLight": "Corporativo Claro",
+      "corpDark": "Corporativo Oscuro"
+    }
+  },
+  "News": {
+    "dateTimeFormat": "es-ES",
+    "title": "Tablón de",
+    "subtitle": "Noticias",
+    "desc": "Mantente al día con las últimas novedades del sector, promociones activas y comunicados importantes de la empresa.",
+    "loading": "Cargando noticias...",
+    "noNews": "Sin noticias recientes",
+    "noNewsDesc": "Las novedades aparecerán aquí cuando se publiquen.",
+    "endOfFeed": "Has llegado al final del tablón de noticias.",
+    "go": "IR",
+    "sourceLabel": "Fuente de información"
+  },
+  "Footer": {
+    "description": "Transformando la gestión comercial con tecnología extraordinaria. Tu socio estratégico en la revolución digital.",
+    "solutions": "Soluciones",
+    "company": "Compañía",
+    "support": "Soporte",
+    "rights": "Todos los derechos reservados.",
+    "servicesTitle": "Servicios",
+    "companyTitle": "Empresa",
+    "contactTitle": "Contacto",
+    "newsletter": "Newsletter",
+    "stayUpdated": "Mantente al día",
+    "links": {
+      "techConsulting": "Consultoría Tecnológica",
+      "softwareDev": "Desarrollo de Software",
+      "cybersecurity": "Ciberseguridad",
+      "cloudSolutions": "Soluciones Cloud",
+      "devops": "DevOps",
+      "ai": "IA & Aprendizaje Automático",
+      "about": "Acerca de Nosotros",
+      "projects": "Proyectos",
+      "contact": "Contacto",
+      "careers": "Carreras",
+      "blog": "Blog",
+      "news": "Noticias",
+      "terms": "Términos de Servicio",
+      "privacy": "Política de Privacidad",
+      "cookies": "Cookies"
+    }
+  },
+  "Services": {
+    "badge": "Portal Comercial Activo",
+    "welcome": "Hola",
+    "desktop": "Escritorio",
+    "work": "de Trabajo",
+    "description": "Accede a todas tus herramientas, consulta noticias y potencia tus ventas.",
+    "messages": "Tienes {count} nuevos mensajes en el panel",
+    "search": "Buscar herramientas...",
+    "tickerDefault": "Bienvenido al Portal Nexus.",
+    "live": "En Vivo",
+    "system": "Sistema",
+    "comercial": "Comercial",
+    "admin": "Admin",
+    "info": "Información",
+    "news": "Novedades Actuales",
+    "newsDesc": "Mantente informado con las últimas noticias del sector.",
+    "apps": {
+      "title": "Aplicaciones",
+      "description": "Acceso rápido a todas tus herramientas de trabajo.",
+      "sales": "Ventas"
+    },
+    "performance": "Rendimiento",
+    "performanceDesc": "Analiza tus métricas y ventas en tiempo real.",
+    "openApp": "Abrir App",
+    "loading": "Cargando servicios...",
+    "sections": {
+      "featuredNews": "Noticias Destacadas",
+      "performance": "Tu Rendimiento",
+      "performanceGoal": "Objetivo",
+      "performanceBonus": "Estás a solo {count} ventas de alcanzar tu bonus de productividad este mes. ¡Sigue así!",
+      "viewAll": "Ver todas",
+      "viewDetails": "Ver Detalle Comisiones",
+      "go": "IR"
+    },
+    "stats": {
+      "energy": "Ventas Energía",
+      "telco": "Altas Telco",
+      "alarms": "Instalaciones",
+      "time": "Tiempo Medio"
+    }
+  },
+  "Login": {
+    "protocol": "Protocolo de Acceso Seguro",
+    "emailLabel": "Email Corporativo",
+    "emailPlaceholder": "usuario@nexus.com",
+    "passwordLabel": "Clave Unificada",
+    "credentialsError": "Error de credenciales.",
+    "authenticating": "Autenticando...",
+    "accessGranted": "Acceso Concedido",
+    "submit": "Iniciar Sesión",
+    "encryption": "Encriptación AES-256",
+    "aiVerified": "Nexus AI Verificado",
+    "copyright": "© 2026 Nexus Sales Ecosystem | Secure Bridge v2.4"
+  },
+  "NexusAI": {
+    "greeting": "¡Hola! Soy Nexus AI. ¿En qué puedo ayudarte hoy a potenciar tus ventas?",
+    "errorMessage": "Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, inténtalo de nuevo.",
+    "activeUser": "colega activo",
+    "activeUsers": "colegas activos",
+    "searchTab": "Búsqueda Global",
+    "chatTab": "Nexus Assistant",
+    "searchPlaceholder": "Escribe para buscar herramientas o información...",
+    "recommended": "Recomendado",
+    "noResults": "Sin resultados",
+    "noResultsDesc": "Intenta preguntar al asistente inteligente.",
+    "openAssistant": "ABRIR NEXUS ASSISTANT",
+    "aiTransparency": "Transparencia IA (EU Act)",
+    "humanSupervision": "Supervisión Humana Activa",
+    "chatPlaceholder": "Pregunta algo sobre comisiones, ventas o ayuda...",
+    "switchMode": "Cambiar Modo",
+    "close": "Cerrar",
+    "onlineStatus": "Online Nexus Intelligence",
+    "catApp": "Aplicación",
+    "catCompany": "Empresa",
+    "catCapabilities": "Capacidades",
+    "catSystem": "Sistema",
+    "catInfo": "Información",
+    "adminPanel": "Panel de Administración",
+    "adminPanelDesc": "Control total del sistema",
+    "newsCenter": "Centro de Noticias",
+    "newsCenterDesc": "Últimas actualizaciones",
+    "companySectionDesc": "Sección corporativa: {slug}",
+    "suggestions": {
+      "sales": "Mis ventas hoy",
+      "bonus": "Bonus del mes",
+      "fiber": "Ayuda con Fibra"
+    }
+  },
+  "Compliance": {
+    "title": "Privacidad y Legalidad Nexus",
+    "gdprLabel": "RGPD (EU 2016/679)",
+    "aiLawLabel": "Ley de IA de la UE",
+    "descPre": "En cumplimiento con el",
+    "descMid": "y la nueva",
+    "descPost": ", le informamos que este portal utiliza cookies técnicas y sistemas de IA con supervisión humana para optimizar su gestión comercial.",
+    "security": "Seguridad Cifrada",
+    "transparency": "Transparencia IA",
+    "accept": "ENTENDIDO Y ACEPTAR",
+    "privacy": "Política de Privacidad"
+  },
+  "Notifications": {
+    "dateTimeFormat": "es-ES",
+    "title": "Notificaciones",
+    "live": "En Vivo",
+    "empty": "No hay actividad reciente",
+    "viewAll": "Ver todo el historial"
+  },
+  "Empresa": {
+    "hero": {
+      "badge": "Nuestra Empresa",
+      "title": "Cultura, Talento y",
+      "titleHighlight": "Propósito",
+      "subtitle": "Conoce los pilares que sustentan Nexus Sales y a las personas que hacen posible lo extraordinario."
+    },
+    "form": {
+      "requiredFields": "Por favor, rellena todos los campos",
+      "success": "¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.",
+      "error": "Error al enviar el mensaje. Inténtalo de nuevo."
+    }
+  },
+  "AgentDashboard": {
+    "title": "Mis Leads",
+    "titleAdmin": "Resumen de Leads",
+    "nuevo": "Nuevos",
+    "proceso": "En Proceso",
+    "finalizado": "Finalizados",
+    "thisWeek": "Esta Semana",
+    "recentLeads": "Actividad Reciente",
+    "noLeads": "Sin leads asignados",
+    "noLeadsHint": "Pide a tu responsable que te asigne leads para ver tu actividad aquí.",
+    "viewAll": "Ver todos",
+    "liveUpdates": "En vivo"
+  },
+  "Nosotros": {
+    "badge": "Nuestras Capacidades",
+    "title": "Innovación que",
+    "titleHighlight": "Transforma",
+    "titleEnd": "el Futuro",
+    "subtitle": "En Nexus Sales no solo vendemos herramientas, construimos el ecosistema tecnológico que tu empresa necesita para escalar.",
+    "features": {
+      "operationalExcellence": "Excelencia Operativa",
+      "continuousInnovation": "Innovación Continua",
+      "support247": "Soporte 24/7",
+      "globalScalability": "Escalabilidad Global"
+    },
+    "contactButton": "Solicitar Información"
+  }
+}
