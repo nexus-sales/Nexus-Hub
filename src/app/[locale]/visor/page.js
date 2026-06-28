@@ -4,10 +4,21 @@ import { useSearchParams } from 'next/navigation';
 import AppWrapper from '@/components/AppWrapper';
 import { Suspense } from 'react';
 
+function isSafeUrl(url) {
+    if (!url) return false;
+    try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'https:';
+    } catch {
+        return false;
+    }
+}
+
 function VisorContent() {
     const searchParams = useSearchParams();
-    const url = searchParams.get('url');
+    const rawUrl = searchParams.get('url');
     const title = searchParams.get('title') || 'Aplicación Externa';
+    const url = isSafeUrl(rawUrl) ? rawUrl : null;
 
     if (!url) return (
         <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-slate-950">

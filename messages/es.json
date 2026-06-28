@@ -255,10 +255,14 @@
         "contactEmail": "Email de Contacto",
         "contactPhone": "Teléfono",
         "location": "Ubicación",
+        "socialTitle": "Redes Sociales",
         "placeholders": {
             "email": "ej: contacto@empresa.com",
             "phone": "ej: +34 600 000 000",
-            "location": "ej: Madrid, España"
+            "location": "ej: Madrid, España",
+            "github": "https://github.com/tu-empresa",
+            "twitter": "https://twitter.com/tu-empresa",
+            "linkedin": "https://linkedin.com/company/tu-empresa"
         }
       },
       "company": {
@@ -475,6 +479,29 @@
     "noLeadsHint": "Pide a tu responsable que te asigne leads para ver tu actividad aquí.",
     "viewAll": "Ver todos",
     "liveUpdates": "En vivo"
+  },
+  "Config": {
+    "sections": {
+      "profile": "Mi Perfil",
+      "security": "Seguridad",
+      "appearance": "Apariencia"
+    },
+    "themes": {
+      "ocean": "Océano",
+      "nature": "Naturaleza",
+      "cosmos": "Cosmos",
+      "energy": "Energía",
+      "corpLight": "Corporativo Claro",
+      "corpDark": "Corporativo Oscuro"
+    }
+  },
+  "AppWrapper": {
+    "secureInstance": "Instancia Segura",
+    "optimized": "Optimizado para esta vista",
+    "syncing": "Sincronizando Nexus",
+    "secureTunnel": "Estableciendo túnel seguro con {title}...",
+    "refresh": "Refrescar Conexión",
+    "openExternal": "Abrir Externo"
   },
   "Nosotros": {
     "badge": "Nuestras Capacidades",

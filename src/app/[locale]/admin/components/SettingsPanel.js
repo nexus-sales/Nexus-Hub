@@ -44,22 +44,25 @@ export default function SettingsPanel({
 
     const saveSettings = async () => {
         try {
-            await Promise.all([
-                nexusService.updateSetting('footer_description', settings.footer_description),
-                nexusService.updateSetting('footer_services', settings.footer_services),
-                nexusService.updateSetting('footer_company', settings.footer_company),
-                nexusService.updateSetting('contact_email', settings.contact_email),
-                nexusService.updateSetting('contact_phone', settings.contact_phone),
-                nexusService.updateSetting('contact_location', settings.contact_location),
-                nexusService.updateSetting('stat_1_label', settings.stat_1_label),
-                nexusService.updateSetting('stat_1_value', settings.stat_1_value),
-                nexusService.updateSetting('stat_2_label', settings.stat_2_label),
-                nexusService.updateSetting('stat_2_value', settings.stat_2_value),
-                nexusService.updateSetting('stat_3_label', settings.stat_3_label),
-                nexusService.updateSetting('stat_3_value', settings.stat_3_value),
-                nexusService.updateSetting('stat_4_label', settings.stat_4_label),
-                nexusService.updateSetting('stat_4_value', settings.stat_4_value),
-            ]);
+            await nexusService.updateSettings({
+                footer_description: settings.footer_description,
+                footer_services:    settings.footer_services,
+                footer_company:     settings.footer_company,
+                contact_email:      settings.contact_email,
+                contact_phone:      settings.contact_phone,
+                contact_location:   settings.contact_location,
+                stat_1_label:       settings.stat_1_label,
+                stat_1_value:       settings.stat_1_value,
+                stat_2_label:       settings.stat_2_label,
+                stat_2_value:       settings.stat_2_value,
+                stat_3_label:       settings.stat_3_label,
+                stat_3_value:       settings.stat_3_value,
+                stat_4_label:       settings.stat_4_label,
+                stat_4_value:       settings.stat_4_value,
+                social_github:      settings.social_github,
+                social_twitter:     settings.social_twitter,
+                social_linkedin:    settings.social_linkedin,
+            });
             alert(t('messages.success'));
         } catch (e) { alert(t('messages.error', { message: e.message })); }
     };

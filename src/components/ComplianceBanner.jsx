@@ -59,9 +59,14 @@ export default function ComplianceBanner() {
                         >
                             {t('accept')}
                         </button>
-                        <button className="w-full py-2 text-slate-400 text-[9px] font-black uppercase tracking-widest hover:text-slate-900 dark:hover:text-white transition-colors">
+                        <a
+                            href="/empresa#contacto"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-2 text-slate-400 text-[9px] font-black uppercase tracking-widest hover:text-slate-900 dark:hover:text-white transition-colors text-center"
+                        >
                             {t('privacy')}
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

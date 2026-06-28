@@ -40,13 +40,20 @@ const Footer = ({ settings = {} }) => {
             {settings.footer_description || t('description')}
           </p>
           <div className="flex items-center justify-center md:justify-start gap-4">
-            {[Github, Twitter, Linkedin].map((Icon, i) => (
-              <button
-                key={i}
-                className="p-2 rounded-lg bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-all hover:scale-110"
-              >
-                <Icon className="w-4 h-4" />
-              </button>
+            {[
+                { Icon: Github, url: settings.social_github },
+                { Icon: Twitter, url: settings.social_twitter },
+                { Icon: Linkedin, url: settings.social_linkedin },
+            ].filter(({ url }) => url).map(({ Icon, url }) => (
+                <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-slate-900/50 border border-slate-800 hover:border-slate-700 transition-all hover:scale-110"
+                >
+                    <Icon className="w-4 h-4" />
+                </a>
             ))}
           </div>
         </div>

@@ -191,11 +191,16 @@ export default function NexusAI() {
         setIsTypingChat(true);
 
         try {
+            const allMessages = newMessages.filter(m => m.role !== 'system');
+            const apiMessages = allMessages.length > 10
+                ? [allMessages[0], ...allMessages.slice(-9)]
+                : allMessages;
+
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    messages: newMessages.filter(m => m.role !== 'system'),
+                    messages: apiMessages,
                     userContext: null
                 })
             });

@@ -6,30 +6,32 @@ import { useNexusTheme } from '@/context/ThemeContext';
 import { useToast } from '@/context/ToastContext';
 import { nexusService } from '@/services/nexusService';
 import { useTheme } from 'next-themes';
+import { useTranslations } from 'next-intl';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import NexusAI from '@/components/NexusAI';
 import ComplianceBanner from '@/components/ComplianceBanner';
 
-const THEMES = [
-    { id: 'oceano',     name: 'Océano',            color: 'bg-blue-500' },
-    { id: 'naturaleza', name: 'Naturaleza',         color: 'bg-emerald-500' },
-    { id: 'cosmos',     name: 'Cosmos',             color: 'bg-purple-500' },
-    { id: 'energia',    name: 'Energía',            color: 'bg-orange-500' },
-    { id: 'corp-claro', name: 'Corporativo Claro',  color: 'bg-indigo-500' },
-    { id: 'corp-oscuro',name: 'Corporativo Oscuro', color: 'bg-blue-600' },
-];
-
-const SECTIONS = [
-    { id: 'perfil',     label: 'Mi Perfil',   icon: User },
-    { id: 'seguridad',  label: 'Seguridad',   icon: Lock },
-    { id: 'apariencia', label: 'Apariencia',  icon: Palette },
-];
-
 export default function ConfiguracionPage() {
+    const tConfig = useTranslations('Config');
     const { primaryColor, selectedTheme, setSelectedTheme } = useNexusTheme();
     const { theme, setTheme } = useTheme();
     const { showToast } = useToast();
+
+    const SECTIONS = [
+        { id: 'perfil',     label: tConfig('sections.profile'),    icon: User },
+        { id: 'seguridad',  label: tConfig('sections.security'),   icon: Lock },
+        { id: 'apariencia', label: tConfig('sections.appearance'),  icon: Palette },
+    ];
+
+    const THEMES = [
+        { id: 'oceano',      name: tConfig('themes.ocean'),      color: 'bg-blue-500' },
+        { id: 'naturaleza',  name: tConfig('themes.nature'),     color: 'bg-emerald-500' },
+        { id: 'cosmos',      name: tConfig('themes.cosmos'),     color: 'bg-purple-500' },
+        { id: 'energia',     name: tConfig('themes.energy'),     color: 'bg-orange-500' },
+        { id: 'corp-claro',  name: tConfig('themes.corpLight'),  color: 'bg-indigo-500' },
+        { id: 'corp-oscuro', name: tConfig('themes.corpDark'),   color: 'bg-blue-600' },
+    ];
 
     const [active, setActive] = useState('perfil');
     const [profile, setProfile] = useState(null);
@@ -278,22 +280,22 @@ export default function ConfiguracionPage() {
                                     <div className="space-y-4">
                                         <h3 className="text-sm font-black uppercase tracking-widest text-slate-400">Color Principal</h3>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                                            {THEMES.map(t => (
+                                            {THEMES.map(theme => (
                                                 <button
-                                                    key={t.id}
-                                                    onClick={() => setSelectedTheme(t.id)}
+                                                    key={theme.id}
+                                                    onClick={() => setSelectedTheme(theme.id)}
                                                     className={`flex items-center gap-3 px-4 py-3 rounded-2xl border-2 transition-all text-left ${
-                                                        selectedTheme === t.id
+                                                        selectedTheme === theme.id
                                                             ? 'border-current shadow-lg'
                                                             : 'border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700'
                                                     }`}
-                                                    style={selectedTheme === t.id ? { borderColor: primaryColor } : {}}
+                                                    style={selectedTheme === theme.id ? { borderColor: primaryColor } : {}}
                                                 >
-                                                    <div className={`w-5 h-5 rounded-full shrink-0 ${t.color}`} />
+                                                    <div className={`w-5 h-5 rounded-full shrink-0 ${theme.color}`} />
                                                     <span className={`text-xs font-bold truncate ${
-                                                        selectedTheme === t.id ? 'text-slate-900 dark:text-white' : 'text-slate-500'
-                                                    }`}>{t.name}</span>
-                                                    {selectedTheme === t.id && <Sparkles className="w-3 h-3 ml-auto shrink-0" style={{ color: primaryColor }} />}
+                                                        selectedTheme === theme.id ? 'text-slate-900 dark:text-white' : 'text-slate-500'
+                                                    }`}>{theme.name}</span>
+                                                    {selectedTheme === theme.id && <Sparkles className="w-3 h-3 ml-auto shrink-0" style={{ color: primaryColor }} />}
                                                 </button>
                                             ))}
                                         </div>

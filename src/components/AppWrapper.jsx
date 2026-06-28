@@ -3,8 +3,10 @@
 import { ExternalLink, RefreshCw, Smartphone, ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function AppWrapper({ title, url, color = "blue", backUrl = "/" }) {
+    const t = useTranslations('AppWrapper');
     const [isLoading, setIsLoading] = useState(true);
     const [key, setKey] = useState(0);
 
@@ -27,10 +29,10 @@ export default function AppWrapper({ title, url, color = "blue", backUrl = "/" }
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         </h2>
                         <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Instancia Segura</span>
+                            <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">{t('secureInstance')}</span>
                             <span className="text-[10px] text-slate-300 dark:text-slate-600">•</span>
                             <span className="text-[10px] text-slate-400 flex items-center gap-1">
-                                <Smartphone className="w-3 h-3" /> Optimizado para esta vista
+                                <Smartphone className="w-3 h-3" /> {t('optimized')}
                             </span>
                         </div>
                     </div>
@@ -40,7 +42,7 @@ export default function AppWrapper({ title, url, color = "blue", backUrl = "/" }
                     <button
                         onClick={handleReload}
                         className="p-2.5 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-slate-500 dark:text-slate-400 transition-all hover:rotate-180"
-                        title="Refrescar Conexión"
+                        title={t('refresh')}
                     >
                         <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
                     </button>
@@ -50,7 +52,7 @@ export default function AppWrapper({ title, url, color = "blue", backUrl = "/" }
                         rel="noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-slate-800 text-white text-xs font-bold rounded-xl hover:bg-black transition-colors"
                     >
-                        Abrir Externo <ExternalLink className="w-3.5 h-3.5" />
+                        {t('openExternal')} <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                 </div>
             </div>
@@ -65,8 +67,8 @@ export default function AppWrapper({ title, url, color = "blue", backUrl = "/" }
                                 <div className={`absolute inset-0 border-4 border-t-blue-600 rounded-full animate-spin`}></div>
                             </div>
                             <div className="space-y-2 text-center">
-                                <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-widest">Sincronizando Nexus</p>
-                                <p className="text-slate-400 text-xs font-medium">Estableciendo túnel seguro con {title}...</p>
+                                <p className="text-slate-900 dark:text-white font-black text-sm uppercase tracking-widest">{t('syncing')}</p>
+                                <p className="text-slate-400 text-xs font-medium">{t('secureTunnel', { title })}</p>
                             </div>
                         </div>
                     </div>

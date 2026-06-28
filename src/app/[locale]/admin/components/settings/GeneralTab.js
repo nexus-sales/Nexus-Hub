@@ -50,6 +50,33 @@ export default function GeneralTab({ settings, setSettings }) {
                     />
                 </div>
             </div>
+
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">{t('socialTitle')}</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.github')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.social_github || ''}
+                        onChange={(e) => setSettings({ ...settings, social_github: e.target.value })}
+                    />
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.twitter')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.social_twitter || ''}
+                        onChange={(e) => setSettings({ ...settings, social_twitter: e.target.value })}
+                    />
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.linkedin')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.social_linkedin || ''}
+                        onChange={(e) => setSettings({ ...settings, social_linkedin: e.target.value })}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

@@ -13,6 +13,15 @@ export const adminService = {
         if (error) throw error;
     },
 
+    async updateSettings(kvObject) {
+        const rows = Object.entries(kvObject)
+            .filter(([, value]) => value !== undefined)
+            .map(([key, value]) => ({ key, value: value ?? '' }));
+        if (rows.length === 0) return;
+        const { error } = await supabase.from('nexus_settings').upsert(rows);
+        if (error) throw error;
+    },
+
     // Audit Logs
     async getAuditLogs() {
         const { data, error } = await supabase.from('nexus_audit_logs').select('*').order('created_at', { ascending: false }).limit(50);

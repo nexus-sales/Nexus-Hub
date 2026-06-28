@@ -59,7 +59,10 @@ function ServiciosContent() {
                     setUserName(userProfile.nombre);
                     setUserId(userProfile.id);
                     setUserRole(userProfile.role || 'user');
-                    nexusService.createAuditLog('Acceso al Portal', userProfile.nombre, 'Escritorio Trabajo');
+                    if (!sessionStorage.getItem('nexus-session-logged')) {
+                        sessionStorage.setItem('nexus-session-logged', '1');
+                        nexusService.createAuditLog('Acceso al Portal', userProfile.nombre, 'Escritorio Trabajo');
+                    }
                 }
 
                 setSettings(settingsData);
