@@ -146,6 +146,13 @@
             "new": "New",
             "inProcess": "In Process",
             "managed": "Managed"
+        },
+        "kanban": {
+            "nuevo": "New",
+            "proceso": "In Progress",
+            "finalizado": "Closed",
+            "dropHere": "Drop here",
+            "noLeads": "No leads"
         }
     },
     "appsGrid": {

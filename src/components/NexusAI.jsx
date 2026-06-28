@@ -369,15 +369,15 @@ export default function NexusAI() {
                                         <Search className="w-10 h-10 text-slate-300" />
                                     </div>
                                     <div>
-                                        <p className="text-slate-900 dark:text-white font-black text-xl">Sin resultados</p>
-                                        <p className="text-slate-500 dark:text-slate-400 mt-2">Intenta preguntar al asistente inteligente.</p>
+                                        <p className="text-slate-900 dark:text-white font-black text-xl">{t('noResults')}</p>
+                                        <p className="text-slate-500 dark:text-slate-400 mt-2">{t('noResultsDesc')}</p>
                                     </div>
                                     <button
                                         onClick={() => setMode('chat')}
                                         className="px-8 py-3 text-white text-xs font-black uppercase tracking-widest rounded-2xl hover:scale-110 active:scale-95 transition-all shadow-xl"
                                         style={{ backgroundColor: primaryColor, boxShadow: `0 10px 30px -10px ${primaryColor}60` }}
                                     >
-                                        ABRIR NEXUS ASSISTANT
+                                        {t('openAssistant')}
                                     </button>
                                 </div>
                             )}

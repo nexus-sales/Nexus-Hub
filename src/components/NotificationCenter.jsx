@@ -6,6 +6,7 @@ import { nexusService } from '@/services/nexusService';
 import { useNexusTheme } from '@/context/ThemeContext';
 import { createClient } from '@/utils/supabase/client';
 import { useToast } from '@/context/ToastContext';
+import { useTranslations } from 'next-intl';
 
 export default function NotificationCenter() {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function NotificationCenter() {
     const [hasUnread, setHasUnread] = useState(true);
     const { primaryColor } = useNexusTheme();
     const { showToast } = useToast();
+    const t = useTranslations('Notifications');
     const dropdownRef = useRef(null);
 
     useEffect(() => {
@@ -57,7 +59,7 @@ export default function NotificationCenter() {
         return () => {
             supabase.removeChannel(channel);
         };
-    }, []);
+    }, [showToast]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -102,8 +104,8 @@ export default function NotificationCenter() {
             {isOpen && (
                 <div className="absolute right-0 mt-4 w-80 bg-white dark:bg-slate-900 rounded-[28px] shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden z-[200] animate-in fade-in slide-in-from-top-4 duration-300">
                     <div className="p-5 border-b border-slate-50 dark:border-slate-800 flex items-center justify-between">
-                        <h3 className="text-xs font-black uppercase tracking-widest text-slate-400">Notificaciones</h3>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-black text-white" style={{ backgroundColor: primaryColor }}>En Vivo</span>
+                        <h3 className="text-xs font-black uppercase tracking-widest text-slate-400">{t('title')}</h3>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black text-white" style={{ backgroundColor: primaryColor }}>{t('live')}</span>
                     </div>
 
                     <div className="max-h-96 overflow-y-auto">
@@ -135,14 +137,14 @@ export default function NotificationCenter() {
                                 <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
                                     <Bell className="w-8 h-8 text-slate-300" />
                                 </div>
-                                <p className="text-xs font-bold text-slate-400">No hay actividad reciente</p>
+                                <p className="text-xs font-bold text-slate-400">{t('empty')}</p>
                             </div>
                         )}
                     </div>
 
                     <div className="p-4 bg-slate-50 dark:bg-slate-950/50 border-t border-slate-100 dark:border-slate-800">
                         <button className="w-full py-2.5 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-                            Ver todo el historial
+                            {t('viewAll')}
                         </button>
                     </div>
                 </div>

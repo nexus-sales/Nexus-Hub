@@ -16,27 +16,38 @@ export async function updateSession(request, i18nResponse) {
     // CSP y Cabeceras de Seguridad
     const isLocal = request.nextUrl.hostname === 'localhost';
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-    
-    // Simplificamos la CSP para asegurar el acceso inicial en el despliegue
-    const cspHeader = `
-      default-src 'self' *;
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' *;
-      style-src 'self' 'unsafe-inline' *;
-      img-src 'self' blob: data: *;
-      font-src 'self' data: *;
-      connect-src 'self' ${supabaseUrl} wss://${supabaseUrl.replace('https://', '')} *;
-      frame-src 'self' *;
-      worker-src 'self' blob:;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self';
-      frame-ancestors 'self' *;
-      ${isLocal ? '' : 'upgrade-insecure-requests;'}
-    `.replace(/\s{2,}/g, ' ').trim();
+    const supabaseHostname = supabaseUrl.replace('https://', '');
+
+    const cspParts = [
+        "default-src 'self'",
+        // unsafe-eval solo en local: Next.js lo necesita para HMR, no en producción
+        `script-src 'self' 'unsafe-inline'${isLocal ? " 'unsafe-eval'" : ''}`,
+        "style-src 'self' 'unsafe-inline'",
+        // https: permite imágenes externas (noticias, avatares) sin abrir a data: URIs arbitrarios
+        "img-src 'self' blob: data: https:",
+        "font-src 'self' data:",
+        // connect-src restringido a Supabase (HTTP + WSS para Realtime); Anthropic se llama server-side
+        `connect-src 'self' ${supabaseUrl} wss://${supabaseHostname}`,
+        // frame-src abierto: AppWrapper embebe URLs externas configuradas por el admin
+        "frame-src *",
+        "worker-src 'self' blob:",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        // frame-ancestors 'self': la app no debe ser embebible en sitios externos (anti-clickjacking)
+        "frame-ancestors 'self'",
+    ];
+
+    if (!isLocal) {
+        cspParts.push('upgrade-insecure-requests');
+    }
+
+    const cspHeader = cspParts.join('; ');
 
     response.headers.set('Content-Security-Policy', cspHeader);
     response.headers.set('X-XSS-Protection', '1; mode=block');
-    response.headers.set('X-Frame-Options', 'ALLOWALL');
+    // X-Frame-Options eliminado: frame-ancestors en CSP es la directiva moderna;
+    // cuando coexisten, los navegadores ignoran X-Frame-Options y solo aplican CSP.
     response.headers.set('X-Content-Type-Options', 'nosniff');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 

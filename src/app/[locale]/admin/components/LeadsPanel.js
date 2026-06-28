@@ -36,7 +36,9 @@ export default function LeadsPanel({ leads, deleteLead, updateLeadStatus, primar
 
     const filteredLeads = leads.filter(lead =>
         lead.customer_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        lead.service_type?.toLowerCase().includes(searchTerm.toLowerCase())
+        lead.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        lead.service_type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        lead.message?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -123,7 +125,7 @@ export default function LeadsPanel({ leads, deleteLead, updateLeadStatus, primar
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="space-y-0.5">
-                                            <div className="text-xs font-black text-slate-800 dark:text-white uppercase">{lead.customer_name}</div>
+                                            <div className="text-xs font-black text-slate-800 dark:text-white uppercase">{lead.customer_name || lead.name || '—'}</div>
                                             <div className="flex items-center gap-2 text-[10px] text-slate-400 font-medium">
                                                 <Mail className="w-2.5 h-2.5" /> {lead.email}
                                             </div>
@@ -131,7 +133,7 @@ export default function LeadsPanel({ leads, deleteLead, updateLeadStatus, primar
                                     </td>
                                     <td className="px-6 py-4">
                                         <span className="px-2.5 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[9px] font-black uppercase rounded-lg border border-blue-100 dark:border-blue-900/30">
-                                            {lead.service_type}
+                                            {lead.service_type || lead.message || '—'}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4">

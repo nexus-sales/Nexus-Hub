@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { Trash2, Mail, Calendar, GripVertical, MessageSquare } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const COLUMNS = [
     {
         id: 'nuevo',
-        label: 'Nuevos',
         dotColor: 'bg-blue-500',
         headerBg: 'bg-blue-50 dark:bg-blue-900/20',
         headerText: 'text-blue-700 dark:text-blue-300',
@@ -15,7 +15,6 @@ const COLUMNS = [
     },
     {
         id: 'proceso',
-        label: 'En Proceso',
         dotColor: 'bg-amber-500',
         headerBg: 'bg-amber-50 dark:bg-amber-900/20',
         headerText: 'text-amber-700 dark:text-amber-300',
@@ -24,7 +23,6 @@ const COLUMNS = [
     },
     {
         id: 'finalizado',
-        label: 'Finalizados',
         dotColor: 'bg-emerald-500',
         headerBg: 'bg-emerald-50 dark:bg-emerald-900/20',
         headerText: 'text-emerald-700 dark:text-emerald-300',
@@ -79,6 +77,7 @@ function LeadCard({ lead, onDelete, onDragStart }) {
 }
 
 export default function KanbanBoard({ leads: propLeads, updateLeadStatus, deleteLead, primaryColor }) {
+    const t = useTranslations('Admin.leads.kanban');
     const [leads, setLeads] = useState(propLeads);
     const [dragOverCol, setDragOverCol] = useState(null);
     const [draggingId, setDraggingId] = useState(null);
@@ -155,7 +154,7 @@ export default function KanbanBoard({ leads: propLeads, updateLeadStatus, delete
                             <div className="flex items-center gap-2">
                                 <span className={`w-2 h-2 rounded-full ${col.dotColor}`} />
                                 <span className={`text-xs font-black uppercase tracking-wider ${col.headerText}`}>
-                                    {col.label}
+                                    {t(col.id)}
                                 </span>
                             </div>
                             <span className={`px-2 py-0.5 rounded-full text-white text-[10px] font-black ${col.countBg}`}>
@@ -187,7 +186,7 @@ export default function KanbanBoard({ leads: propLeads, updateLeadStatus, delete
                                         : 'border-slate-200 dark:border-slate-700'
                                 }`}>
                                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                                        {isOver ? 'Suelta aquí' : 'Sin leads'}
+                                        {isOver ? t('dropHere') : t('noLeads')}
                                     </p>
                                 </div>
                             )}

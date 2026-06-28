@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTheme } from 'next-themes';
 import { useNexusTheme } from '@/context/ThemeContext';
 import Navbar from '@/components/Navbar';
@@ -12,7 +12,7 @@ import {
     Zap, Phone, ShieldCheck, Mic, DollarSign, Settings, Users, BarChart3,
     Rocket, Newspaper, LayoutDashboard, Megaphone, Radio, Key, Shield, Activity, FileText
 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 
 // Componentes
@@ -55,7 +55,7 @@ export default function AdminPage() {
         { id: 'corp-oscuro', name: t('themes.corpDark'), primary: 'bg-blue-600' },
     ];
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             const profile = await nexusService.getCurrentUserProfile();
 
@@ -93,11 +93,11 @@ export default function AdminPage() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     if (!isAuthorized && !isLoading) {
         return (
