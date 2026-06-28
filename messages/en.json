@@ -256,13 +256,17 @@
         "contactPhone": "Phone Number",
         "location": "Location",
         "socialTitle": "Social Media",
+        "legalTitle": "Legal Links (footer)",
         "placeholders": {
             "email": "e.g.: contact@company.com",
             "phone": "e.g.: +34 600 000 000",
             "location": "e.g.: Madrid, Spain",
             "github": "https://github.com/your-company",
             "twitter": "https://twitter.com/your-company",
-            "linkedin": "https://linkedin.com/company/your-company"
+            "linkedin": "https://linkedin.com/company/your-company",
+            "legalTerms": "Terms of Service URL",
+            "legalPrivacy": "Privacy Policy URL",
+            "legalCookies": "Cookies Policy URL"
         }
       },
       "company": {
@@ -288,7 +292,13 @@
           "statLabel": "Statistic",
           "labelField": "Label",
           "valueField": "Value",
-          "helpText": "These values are displayed in the \"QuickStats\" section of the Services page. Use short and direct values (e.g.: 1.2k, 850, 15m) to maintain the aesthetic."
+          "helpText": "These values are displayed in the \"QuickStats\" section of the Services page. Use short and direct values (e.g.: 1.2k, 850, 15m) to maintain the aesthetic.",
+          "defaults": {
+              "energy": "Energy Sales",
+              "telco": "Telco Signups",
+              "alarms": "Installations",
+              "avgTime": "Average Time"
+          }
       },
       "saveAll": "Save All Settings",
       "messages": {
@@ -328,6 +338,9 @@
     "contactTitle": "Contact",
     "newsletter": "Newsletter",
     "stayUpdated": "Stay updated",
+    "newsletterInvalidEmail": "Please enter a valid email address.",
+    "newsletterSuccess": "✅ Subscription confirmed! We'll keep you updated.",
+    "newsletterError": "Error registering subscription. Please try again.",
     "links": {
       "techConsulting": "Technology Consulting",
       "softwareDev": "Software Development",

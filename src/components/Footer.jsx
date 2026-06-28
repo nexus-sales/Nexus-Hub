@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Rocket,
   Mail,
@@ -14,10 +14,31 @@ import {
 } from 'lucide-react';
 import { useNexusTheme } from '@/context/ThemeContext';
 import { useTranslations } from 'next-intl';
+import { nexusService } from '@/services/nexusService';
 
 const Footer = ({ settings = {} }) => {
   const { primaryColor } = useNexusTheme();
   const t = useTranslations('Footer');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+
+  const handleNewsletter = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!newsletterEmail.trim() || !emailRegex.test(newsletterEmail)) {
+      alert(t('newsletterInvalidEmail'));
+      return;
+    }
+    try {
+      await nexusService.createLead({
+        name: 'Newsletter',
+        email: newsletterEmail.trim(),
+        message: 'Suscripción Newsletter',
+      });
+      alert(t('newsletterSuccess'));
+      setNewsletterEmail('');
+    } catch {
+      alert(t('newsletterError'));
+    }
+  };
 
   return (
     <footer className="w-full bg-slate-950 text-slate-400 py-20 px-6 lg:px-8 border-t border-slate-900 mt-20">
@@ -147,9 +168,12 @@ const Footer = ({ settings = {} }) => {
               <input
                 type="email"
                 placeholder="tu@email.com"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs outline-none focus:border-indigo-500 transition-all pr-12"
               />
               <button
+                onClick={handleNewsletter}
                 className="absolute right-1 top-1 bottom-1 px-3 rounded-lg text-white transition-all hover:scale-105 active:scale-95"
                 style={{ backgroundColor: primaryColor }}
               >
@@ -167,10 +191,19 @@ const Footer = ({ settings = {} }) => {
           © {new Date().getFullYear()} Nexus Sales. {t('rights')}
         </p>
         <div className="flex flex-wrap justify-center gap-8 text-slate-500">
-          {[t('links.terms'), t('links.privacy'), t('links.cookies')].map((item) => (
-            <button key={item} className="hover:text-white transition-colors">
-              {item}
-            </button>
+          {[
+            { label: t('links.terms'),   url: settings.legal_terms   },
+            { label: t('links.privacy'), url: settings.legal_privacy },
+            { label: t('links.cookies'), url: settings.legal_cookies },
+          ].map(({ label, url }) => (
+            <a
+              key={label}
+              href={url || '#'}
+              {...(url ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="hover:text-white transition-colors"
+            >
+              {label}
+            </a>
           ))}
         </div>
       </div>

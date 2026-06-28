@@ -77,6 +77,33 @@ export default function GeneralTab({ settings, setSettings }) {
                     />
                 </div>
             </div>
+
+            <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">{t('legalTitle')}</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.legalTerms')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.legal_terms || ''}
+                        onChange={(e) => setSettings({ ...settings, legal_terms: e.target.value })}
+                    />
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.legalPrivacy')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.legal_privacy || ''}
+                        onChange={(e) => setSettings({ ...settings, legal_privacy: e.target.value })}
+                    />
+                    <input
+                        type="url"
+                        placeholder={t('placeholders.legalCookies')}
+                        className="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl outline-none focus:ring-2 text-xs font-bold"
+                        value={settings.legal_cookies || ''}
+                        onChange={(e) => setSettings({ ...settings, legal_cookies: e.target.value })}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

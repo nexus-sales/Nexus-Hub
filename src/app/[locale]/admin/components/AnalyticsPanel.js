@@ -70,7 +70,7 @@ export default function AnalyticsPanel({ leads, auditLogs, primaryColor, users =
             .map(([name, count]) => ({ name, count }))
             .sort((a, b) => b.count - a.count)
             .slice(0, 5); // Top 5 agentes
-    }, [leads, users]);
+    }, [leads, users, t]);
 
     const stats = [
         { label: t('totalLeads'), value: leads.length, icon: MessageSquare, color: 'text-indigo-500' },

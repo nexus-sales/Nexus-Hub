@@ -7,10 +7,10 @@ export default function StatsTab({ settings, setSettings, primaryColor }) {
     const t = useTranslations('Admin.settings.stats');
 
     const statConfig = [
-        { id: 1, icon: Zap, label_key: 'stat_1_label', value_key: 'stat_1_value', default_label: 'Ventas Energía', default_value: '1,2k' },
-        { id: 2, icon: Phone, label_key: 'stat_2_label', value_key: 'stat_2_value', default_label: 'Altas Telco', default_value: '850' },
-        { id: 3, icon: ShieldCheck, label_key: 'stat_3_label', value_key: 'stat_3_value', default_label: 'Instalaciones', default_value: '320' },
-        { id: 4, icon: Rocket, label_key: 'stat_4_label', value_key: 'stat_4_value', default_label: 'Tiempo Medio', default_value: '15m' }
+        { id: 1, icon: Zap,        label_key: 'stat_1_label', value_key: 'stat_1_value', default_label: t('defaults.energy'),   default_value: '1,2k' },
+        { id: 2, icon: Phone,      label_key: 'stat_2_label', value_key: 'stat_2_value', default_label: t('defaults.telco'),    default_value: '850'  },
+        { id: 3, icon: ShieldCheck, label_key: 'stat_3_label', value_key: 'stat_3_value', default_label: t('defaults.alarms'),  default_value: '320'  },
+        { id: 4, icon: Rocket,     label_key: 'stat_4_label', value_key: 'stat_4_value', default_label: t('defaults.avgTime'), default_value: '15m'  }
     ];
 
     return (

@@ -37,6 +37,7 @@ function ServiciosContent() {
     const [userId, setUserId] = useState(null);
     const [userRole, setUserRole] = useState('user');
     const [leadCount, setLeadCount] = useState(0);
+    const [performance, setPerformance] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [tickerMessages, setTickerMessages] = useState([]);
     const [settings, setSettings] = useState({});
@@ -103,6 +104,10 @@ function ServiciosContent() {
                     setLeadCount(leadsData.filter(l => l.status === 'nuevo').length);
                 }
 
+                const total = leadsData.length;
+                const finalizados = leadsData.filter(l => l.status === 'finalizado').length;
+                setPerformance(total > 0 ? Math.round(finalizados / total * 100) : 0);
+
                 if (tickerData && tickerData.length > 0) {
                     setTickerMessages(tickerData);
                 } else {
@@ -162,7 +167,7 @@ function ServiciosContent() {
                 />
             </div>
 
-            <NewsPerformance noticias={noticias} primaryColor={primaryColor} />
+            <NewsPerformance noticias={noticias} primaryColor={primaryColor} performance={performance} />
 
             <NexusServices capabilities={capabilities} primaryColor={primaryColor} />
 

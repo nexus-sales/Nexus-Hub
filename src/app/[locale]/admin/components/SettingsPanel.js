@@ -62,6 +62,9 @@ export default function SettingsPanel({
                 social_github:      settings.social_github,
                 social_twitter:     settings.social_twitter,
                 social_linkedin:    settings.social_linkedin,
+                legal_terms:        settings.legal_terms,
+                legal_privacy:      settings.legal_privacy,
+                legal_cookies:      settings.legal_cookies,
             });
             alert(t('messages.success'));
         } catch (e) { alert(t('messages.error', { message: e.message })); }

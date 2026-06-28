@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
 
-export default function NewsPerformance({ noticias, primaryColor }) {
+export default function NewsPerformance({ noticias, primaryColor, performance = 85 }) {
     const t = useTranslations('Services.sections');
     
     return (
@@ -79,13 +79,13 @@ export default function NewsPerformance({ noticias, primaryColor }) {
                             strokeWidth="8"
                             fill="transparent"
                             strokeDasharray={364.4}
-                            strokeDashoffset={364.4 * (1 - 0.85)}
+                            strokeDashoffset={364.4 * (1 - performance / 100)}
                             strokeLinecap="round"
                             className="text-white transition-all duration-1000 ease-out"
                         />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-3xl font-black">85%</span>
+                        <span className="text-3xl font-black">{performance}%</span>
                         <span className="text-[8px] font-black uppercase tracking-widest opacity-70">{t('performanceGoal')}</span>
                     </div>
                 </div>

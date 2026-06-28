@@ -256,13 +256,17 @@
         "contactPhone": "Teléfono",
         "location": "Ubicación",
         "socialTitle": "Redes Sociales",
+        "legalTitle": "Enlaces Legales (pie de página)",
         "placeholders": {
             "email": "ej: contacto@empresa.com",
             "phone": "ej: +34 600 000 000",
             "location": "ej: Madrid, España",
             "github": "https://github.com/tu-empresa",
             "twitter": "https://twitter.com/tu-empresa",
-            "linkedin": "https://linkedin.com/company/tu-empresa"
+            "linkedin": "https://linkedin.com/company/tu-empresa",
+            "legalTerms": "URL Términos de Servicio",
+            "legalPrivacy": "URL Política de Privacidad",
+            "legalCookies": "URL Política de Cookies"
         }
       },
       "company": {
@@ -288,7 +292,13 @@
           "statLabel": "Estadística",
           "labelField": "Etiqueta",
           "valueField": "Valor",
-          "helpText": "Estos valores se muestran en la sección \"QuickStats\" de la página de Servicios. Usa valores cortos y directos (ej: 1.2k, 850, 15m) para mantener la estética."
+          "helpText": "Estos valores se muestran en la sección \"QuickStats\" de la página de Servicios. Usa valores cortos y directos (ej: 1.2k, 850, 15m) para mantener la estética.",
+          "defaults": {
+              "energy": "Ventas Energía",
+              "telco": "Altas Telco",
+              "alarms": "Instalaciones",
+              "avgTime": "Tiempo Medio"
+          }
       },
       "saveAll": "Guardar Toda la Configuración",
       "messages": {
@@ -329,6 +339,9 @@
     "contactTitle": "Contacto",
     "newsletter": "Newsletter",
     "stayUpdated": "Mantente al día",
+    "newsletterInvalidEmail": "Por favor, introduce un email válido.",
+    "newsletterSuccess": "✅ ¡Suscripción confirmada! Te mantendremos informado.",
+    "newsletterError": "Error al registrar la suscripción. Inténtalo de nuevo.",
     "links": {
       "techConsulting": "Consultoría Tecnológica",
       "softwareDev": "Desarrollo de Software",
