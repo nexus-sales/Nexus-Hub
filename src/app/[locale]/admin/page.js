@@ -24,6 +24,7 @@ import SettingsPanel from './components/SettingsPanel';
 import AuditLog from './components/AuditLog';
 import LeadsPanel from './components/LeadsPanel';
 import AnalyticsPanel from './components/AnalyticsPanel';
+import NotesTasksPanel from './components/NotesTasksPanel';
 
 const iconMap = {
     Zap, Phone, ShieldCheck, Mic, DollarSign, Settings, Users, BarChart3,
@@ -42,6 +43,8 @@ export default function AdminPage() {
     const [users, setUsers] = useState([]);
     const [auditLogs, setAuditLogs] = useState([]);
     const [leads, setLeads] = useState([]);
+    const [notes, setNotes] = useState([]);
+    const [tasks, setTasks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthorized, setIsAuthorized] = useState(false);
     const router = useRouter();
@@ -66,13 +69,15 @@ export default function AdminPage() {
             }
 
             setIsAuthorized(true);
-            const [appsData, newsData, settingsData, profilesData, logsData, leadsData] = await Promise.all([
+            const [appsData, newsData, settingsData, profilesData, logsData, leadsData, notesData, tasksData] = await Promise.all([
                 nexusService.getApps(),
                 nexusService.getNews(),
                 nexusService.getSettings().catch(() => ({})),
                 nexusService.getProfiles(),
                 nexusService.getAuditLogs(),
-                nexusService.getLeads().catch(() => [])
+                nexusService.getLeads().catch(() => []),
+                nexusService.getNotes().catch(() => []),
+                nexusService.getTasks().catch(() => [])
             ]);
 
             const mapApp = (app) => ({
@@ -88,6 +93,8 @@ export default function AdminPage() {
             setUsers(profilesData || []);
             setAuditLogs(logsData || []);
             setLeads(leadsData || []);
+            setNotes(notesData || []);
+            setTasks(tasksData || []);
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {
@@ -182,6 +189,14 @@ export default function AdminPage() {
                     />
 
                     <ActionsGrid primaryColor={primaryColor} fetchData={fetchData} noticias={noticias} />
+
+                    <NotesTasksPanel
+                        notes={notes}
+                        tasks={tasks}
+                        users={users}
+                        primaryColor={primaryColor}
+                        fetchData={fetchData}
+                    />
 
                     <UsersTable
                         users={users}

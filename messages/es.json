@@ -155,6 +155,47 @@
             "noLeads": "Sin leads"
         }
     },
+    "workspace": {
+        "dateTimeFormat": "es-ES",
+        "eyebrow": "Memoria operativa",
+        "title": "Notas y Tareas",
+        "activeNotice": "{count} tareas activas",
+        "openTasks": "{count} abiertas",
+        "delete": "Eliminar",
+        "notes": {
+            "title": "Notas",
+            "titlePlaceholder": "Titulo de la nota",
+            "contentPlaceholder": "Escribe una nota interna...",
+            "categoryPlaceholder": "Categoria",
+            "defaultCategory": "general",
+            "pin": "Fijar",
+            "create": "Crear nota",
+            "empty": "Sin notas internas"
+        },
+        "tasks": {
+            "title": "Tareas",
+            "titlePlaceholder": "Titulo de la tarea",
+            "descriptionPlaceholder": "Descripcion o contexto de la tarea...",
+            "create": "Crear tarea",
+            "unassigned": "Sin responsable",
+            "noDue": "Sin vencimiento",
+            "activate": "Activar tarea",
+            "complete": "Completar tarea",
+            "empty": "Sin tareas",
+            "status": {
+                "pending": "Pendiente",
+                "active": "Activa",
+                "completed": "Completada",
+                "cancelled": "Cancelada"
+            },
+            "priority": {
+                "low": "Baja",
+                "normal": "Normal",
+                "high": "Alta",
+                "urgent": "Urgente"
+            }
+        }
+    },
     "appsGrid": {
         "title": "Gestionar Aplicaciones",
         "deleteConfirm": "¿Eliminar \"{title}\"?",
@@ -465,7 +506,9 @@
     "title": "Notificaciones",
     "live": "En Vivo",
     "empty": "No hay actividad reciente",
-    "viewAll": "Ver todo el historial"
+    "viewAll": "Ver todo el historial",
+    "activeTask": "Tarea activa",
+    "pendingTask": "Tarea pendiente"
   },
   "Empresa": {
     "hero": {

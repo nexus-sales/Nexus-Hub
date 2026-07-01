@@ -155,6 +155,47 @@
             "noLeads": "No leads"
         }
     },
+    "workspace": {
+        "dateTimeFormat": "en-US",
+        "eyebrow": "Operational memory",
+        "title": "Notes and Tasks",
+        "activeNotice": "{count} active tasks",
+        "openTasks": "{count} open",
+        "delete": "Delete",
+        "notes": {
+            "title": "Notes",
+            "titlePlaceholder": "Note title",
+            "contentPlaceholder": "Write an internal note...",
+            "categoryPlaceholder": "Category",
+            "defaultCategory": "general",
+            "pin": "Pin",
+            "create": "Create note",
+            "empty": "No internal notes"
+        },
+        "tasks": {
+            "title": "Tasks",
+            "titlePlaceholder": "Task title",
+            "descriptionPlaceholder": "Description or task context...",
+            "create": "Create task",
+            "unassigned": "Unassigned",
+            "noDue": "No due date",
+            "activate": "Activate task",
+            "complete": "Complete task",
+            "empty": "No tasks",
+            "status": {
+                "pending": "Pending",
+                "active": "Active",
+                "completed": "Completed",
+                "cancelled": "Cancelled"
+            },
+            "priority": {
+                "low": "Low",
+                "normal": "Normal",
+                "high": "High",
+                "urgent": "Urgent"
+            }
+        }
+    },
     "appsGrid": {
         "title": "Manage Applications",
         "deleteConfirm": "Delete \"{title}\"?",
@@ -464,7 +505,9 @@
     "title": "Notifications",
     "live": "Live",
     "empty": "No recent activity",
-    "viewAll": "View all history"
+    "viewAll": "View all history",
+    "activeTask": "Active task",
+    "pendingTask": "Pending task"
   },
   "Empresa": {
     "hero": {

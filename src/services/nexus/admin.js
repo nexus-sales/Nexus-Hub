@@ -111,5 +111,119 @@ export const adminService = {
             total: data.length,
             thisWeek: data.filter(l => new Date(l.created_at) >= weekAgo).length
         };
+    },
+
+    // Notes
+    async getNotes() {
+        const { data, error } = await supabase
+            .from('nexus_notes')
+            .select('*')
+            .order('pinned', { ascending: false })
+            .order('updated_at', { ascending: false });
+        if (error) return [];
+        return data;
+    },
+
+    async createNote(note) {
+        const profile = await this.getCurrentUserProfile();
+        const { data, error } = await supabase
+            .from('nexus_notes')
+            .insert([{
+                title: note.title,
+                content: note.content,
+                category: note.category || 'general',
+                visibility: note.visibility || 'team',
+                pinned: Boolean(note.pinned),
+                created_by: profile?.id || null
+            }])
+            .select()
+            .single();
+        if (error) throw error;
+        await this.createAuditLog('Nota creada', profile?.nombre || 'Admin', note.title);
+        return data;
+    },
+
+    async updateNote(id, updates) {
+        const { error } = await supabase
+            .from('nexus_notes')
+            .update({ ...updates, updated_at: new Date().toISOString() })
+            .eq('id', id);
+        if (error) throw error;
+    },
+
+    async deleteNote(id) {
+        const { error } = await supabase.from('nexus_notes').delete().eq('id', id);
+        if (error) throw error;
+        await this.createAuditLog('Nota eliminada', 'Admin', `Nota ID: ${id}`);
+    },
+
+    // Tasks
+    async getTasks() {
+        const { data, error } = await supabase
+            .from('nexus_tasks')
+            .select('*')
+            .order('due_at', { ascending: true, nullsFirst: false })
+            .order('created_at', { ascending: false });
+        if (error) return [];
+        return data;
+    },
+
+    async getActiveTasks(userId = null) {
+        let query = supabase
+            .from('nexus_tasks')
+            .select('*')
+            .in('status', ['active', 'pending'])
+            .order('due_at', { ascending: true, nullsFirst: false })
+            .limit(20);
+
+        if (userId) {
+            query = query.or(`assigned_to.eq.${userId},assigned_to.is.null`);
+        }
+
+        const { data, error } = await query;
+        if (error) return [];
+        return data;
+    },
+
+    async createTask(task) {
+        const profile = await this.getCurrentUserProfile();
+        const status = task.status || 'pending';
+        const { data, error } = await supabase
+            .from('nexus_tasks')
+            .insert([{
+                title: task.title,
+                description: task.description || '',
+                status,
+                priority: task.priority || 'normal',
+                assigned_to: task.assigned_to || null,
+                created_by: profile?.id || null,
+                due_at: task.due_at || null,
+                activated_at: status === 'active' ? new Date().toISOString() : null
+            }])
+            .select()
+            .single();
+        if (error) throw error;
+        await this.createAuditLog('Tarea creada', profile?.nombre || 'Admin', task.title);
+        return data;
+    },
+
+    async updateTask(id, updates) {
+        const nextUpdates = { ...updates, updated_at: new Date().toISOString() };
+        if (updates.status === 'active') nextUpdates.activated_at = new Date().toISOString();
+        if (updates.status === 'completed') nextUpdates.completed_at = new Date().toISOString();
+        if (updates.status && updates.status !== 'completed') nextUpdates.completed_at = null;
+
+        const { error } = await supabase
+            .from('nexus_tasks')
+            .update(nextUpdates)
+            .eq('id', id);
+        if (error) throw error;
+        await this.createAuditLog('Tarea actualizada', 'Admin', `Tarea ID: ${id}`);
+    },
+
+    async deleteTask(id) {
+        const { error } = await supabase.from('nexus_tasks').delete().eq('id', id);
+        if (error) throw error;
+        await this.createAuditLog('Tarea eliminada', 'Admin', `Tarea ID: ${id}`);
     }
 };

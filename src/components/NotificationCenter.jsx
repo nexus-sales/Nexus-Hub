@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Bell, Activity, User, Heart, Zap, CheckCircle2, X } from 'lucide-react';
+import { Bell, Activity, User, Zap, ClipboardList, CalendarClock } from 'lucide-react';
 import { nexusService } from '@/services/nexusService';
 import { useNexusTheme } from '@/context/ThemeContext';
 import { createClient } from '@/utils/supabase/client';
@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl';
 export default function NotificationCenter() {
     const [isOpen, setIsOpen] = useState(false);
     const [notifications, setNotifications] = useState([]);
-    const [hasUnread, setHasUnread] = useState(true);
+    const [hasUnread, setHasUnread] = useState(false);
     const { primaryColor } = useNexusTheme();
     const { showToast } = useToast();
     const t = useTranslations('Notifications');
@@ -20,8 +20,23 @@ export default function NotificationCenter() {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const logs = await nexusService.getAuditLogs();
-                setNotifications(logs.slice(0, 5));
+                const profile = await nexusService.getCurrentUserProfile();
+                const [logs, tasks] = await Promise.all([
+                    nexusService.getAuditLogs(),
+                    nexusService.getActiveTasks(profile?.id).catch(() => [])
+                ]);
+                const taskNotifications = tasks.map(task => ({
+                    id: `task-${task.id}`,
+                    kind: 'task',
+                    action: task.status === 'active' ? t('activeTask') : t('pendingTask'),
+                    user: profile?.nombre || 'Nexus',
+                    target: task.title,
+                    created_at: task.due_at || task.created_at,
+                    status: task.priority,
+                    due_at: task.due_at
+                }));
+                setNotifications([...taskNotifications, ...logs.slice(0, 5)].slice(0, 8));
+                setHasUnread(taskNotifications.length > 0);
             } catch (error) {
                 console.error('Error fetching notifications:', error);
             }
@@ -56,10 +71,40 @@ export default function NotificationCenter() {
             )
             .subscribe();
 
+        const taskChannel = supabase
+            .channel('nexus_tasks_changes')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'nexus_tasks'
+                },
+                (payload) => {
+                    const task = payload.new;
+                    if (!task || !['active', 'pending'].includes(task.status)) return;
+                    const newTaskNotification = {
+                        id: `task-${task.id}`,
+                        kind: 'task',
+                        action: task.status === 'active' ? t('activeTask') : t('pendingTask'),
+                        user: 'Nexus',
+                        target: task.title,
+                        created_at: task.due_at || task.updated_at || task.created_at,
+                        status: task.priority,
+                        due_at: task.due_at
+                    };
+                    setNotifications(prev => [newTaskNotification, ...prev.filter(item => item.id !== newTaskNotification.id)].slice(0, 8));
+                    setHasUnread(true);
+                    showToast(`${newTaskNotification.action}: ${task.title}`, 'success');
+                }
+            )
+            .subscribe();
+
         return () => {
             supabase.removeChannel(channel);
+            supabase.removeChannel(taskChannel);
         };
-    }, [showToast]);
+    }, [showToast, t]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -73,6 +118,7 @@ export default function NotificationCenter() {
 
     const getIcon = (action) => {
         if (action.includes('Lead')) return <User className="w-4 h-4" />;
+        if (action.includes('Tarea') || action.includes('Task')) return <ClipboardList className="w-4 h-4" />;
         if (action.includes('Port')) return <Zap className="w-4 h-4" />;
         if (action.includes('Acceso')) return <Activity className="w-4 h-4" />;
         return <Activity className="w-4 h-4" />;
@@ -125,7 +171,14 @@ export default function NotificationCenter() {
                                                     por <span className="font-bold">{notif.user}</span> • {notif.target}
                                                 </p>
                                                 <p className="text-[9px] text-slate-400 font-medium">
-                                                    {new Date(notif.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                                                    {notif.kind === 'task' && notif.due_at ? (
+                                                        <span className="inline-flex items-center gap-1 text-amber-500">
+                                                            <CalendarClock className="w-3 h-3" />
+                                                            {new Date(notif.due_at).toLocaleString(t('dateTimeFormat'), { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                                        </span>
+                                                    ) : (
+                                                        new Date(notif.created_at).toLocaleTimeString(t('dateTimeFormat'), { hour: '2-digit', minute: '2-digit' })
+                                                    )}
                                                 </p>
                                             </div>
                                         </div>
