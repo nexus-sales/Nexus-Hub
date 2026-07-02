@@ -421,6 +421,11 @@
       "description": "Quick access to all your work tools.",
       "sales": "Sales"
     },
+    "workspaceApp": {
+      "title": "Notes and Tasks",
+      "description": "Manage internal notes, active tasks, owners, and team alerts.",
+      "badge": "New"
+    },
     "performance": "Performance",
     "performanceDesc": "Analyze your metrics and sales in real time.",
     "openApp": "Open App",

@@ -1,6 +1,6 @@
 'use client';
 
-import { Zap, Phone, ShieldCheck, Mic, DollarSign, Newspaper, LayoutDashboard, Users, BarChart3, Settings, Rocket, Megaphone, Radio, Key, Shield, Activity, FileText, Search, Sparkles, Info, Network, Cpu } from 'lucide-react';
+import { Zap, Phone, ShieldCheck, Mic, DollarSign, Newspaper, LayoutDashboard, Users, BarChart3, Settings, Rocket, Megaphone, Radio, Key, Shield, Activity, FileText, Search, Sparkles, Info, Network, Cpu, ClipboardList } from 'lucide-react';
 import { useState, useEffect, Suspense } from 'react';
 import { useNexusTheme } from '@/context/ThemeContext';
 import Navbar from '@/components/Navbar';
@@ -21,7 +21,7 @@ import ServicesSkeleton from './components/ServicesSkeleton';
 import { useTranslations, useLocale } from 'next-intl';
 
 const iconMap = {
-    Zap, Phone, ShieldCheck, Mic, DollarSign, Settings, Users, BarChart3, Rocket, Newspaper, LayoutDashboard, Megaphone, Radio, Key, Shield, Activity, FileText, Search, Sparkles, Info, Network, Cpu
+    Zap, Phone, ShieldCheck, Mic, DollarSign, Settings, Users, BarChart3, Rocket, Newspaper, LayoutDashboard, Megaphone, Radio, Key, Shield, Activity, FileText, Search, Sparkles, Info, Network, Cpu, ClipboardList
 };
 
 function ServiciosContent() {
@@ -87,7 +87,17 @@ function ServiciosContent() {
                 });
 
                 setComercialApps(filteredApps.filter(app => app.type === 'comercial' || !app.type).map(mapApp));
-                setAdminApps(filteredApps.filter(app => app.type === 'admin').map(mapApp));
+                const workspaceApp = {
+                    id: 'nexus-workspace-notes-tasks',
+                    title: t('workspaceApp.title'),
+                    description: t('workspaceApp.description'),
+                    href: `/${locale}/admin#notas-tareas`,
+                    isExternal: false,
+                    icon: ClipboardList,
+                    badge: t('workspaceApp.badge')
+                };
+                const mappedAdminApps = filteredApps.filter(app => app.type === 'admin').map(mapApp);
+                setAdminApps(currentRole === 'admin' ? [workspaceApp, ...mappedAdminApps] : mappedAdminApps);
 
                 // Other Content
                 setCapabilities(capsData || []);

@@ -181,6 +181,14 @@ export default function AdminPage() {
 
                     <Header primaryColor={primaryColor} />
 
+                    <NotesTasksPanel
+                        notes={notes}
+                        tasks={tasks}
+                        users={users}
+                        primaryColor={primaryColor}
+                        fetchData={fetchData}
+                    />
+
                     <AnalyticsPanel
                         leads={leads}
                         auditLogs={auditLogs}
@@ -189,14 +197,6 @@ export default function AdminPage() {
                     />
 
                     <ActionsGrid primaryColor={primaryColor} fetchData={fetchData} noticias={noticias} />
-
-                    <NotesTasksPanel
-                        notes={notes}
-                        tasks={tasks}
-                        users={users}
-                        primaryColor={primaryColor}
-                        fetchData={fetchData}
-                    />
 
                     <UsersTable
                         users={users}

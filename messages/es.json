@@ -422,6 +422,11 @@
       "description": "Acceso rápido a todas tus herramientas de trabajo.",
       "sales": "Ventas"
     },
+    "workspaceApp": {
+      "title": "Notas y Tareas",
+      "description": "Gestiona notas internas, tareas activas, responsables y avisos del equipo.",
+      "badge": "Nuevo"
+    },
     "performance": "Rendimiento",
     "performanceDesc": "Analiza tus métricas y ventas en tiempo real.",
     "openApp": "Abrir App",

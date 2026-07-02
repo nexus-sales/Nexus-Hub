@@ -96,7 +96,7 @@ export default function NotesTasksPanel({ notes, tasks, users, primaryColor, fet
     const isOverdue = (task) => task.due_at && new Date(task.due_at) < new Date() && task.status !== 'completed';
 
     return (
-        <section className="space-y-6">
+        <section id="notas-tareas" className="space-y-6 scroll-mt-28">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
                 <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">{t('eyebrow')}</p>
