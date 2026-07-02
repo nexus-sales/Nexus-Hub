@@ -21,7 +21,7 @@ export async function updateSession(request, i18nResponse) {
     const cspParts = [
         "default-src 'self'",
         // unsafe-eval solo en local: Next.js lo necesita para HMR, no en producción
-        `script-src 'self' 'unsafe-inline'${isLocal ? " 'unsafe-eval'" : ''}`,
+        `script-src 'self' 'unsafe-inline'${isLocal ? " 'unsafe-eval'" : ' https://vercel.live'}`,
         "style-src 'self' 'unsafe-inline'",
         // https: permite imágenes externas (noticias, avatares) sin abrir a data: URIs arbitrarios
         "img-src 'self' blob: data: https:",
